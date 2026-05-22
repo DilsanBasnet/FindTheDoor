@@ -4,7 +4,7 @@ public class player : MonoBehaviour
 {
    private float horizontal;
    private float speed = 8f;
-   private float jump = 15f;
+   private float jump = 9f;
    private bool facingright = true;
 
    [SerializeField] private Rigidbody2D rgby;
@@ -27,7 +27,12 @@ public class player : MonoBehaviour
     {
         rgby.linearVelocity = new Vector2(horizontal * speed, rgby.linearVelocity.y);
     }
-    private void Flip()
+        private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+    } 
+      private void Flip()
     {
         if(facingright && horizontal < 0f || !facingright && horizontal > 0f){
             facingright = !facingright;
@@ -38,13 +43,4 @@ public class player : MonoBehaviour
 
         }
     }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
-    }
-
-
-
 }
