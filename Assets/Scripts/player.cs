@@ -3,8 +3,8 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
    private float horizontal;
-   private float speed = 8f;
-   private float jump = 9f;
+   private float speed = 6f;
+   private float jump = 8f;
    private bool facingright = true;
 
    [SerializeField] private Rigidbody2D rgby;
