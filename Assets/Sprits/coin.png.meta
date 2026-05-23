@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 74bd08f60d4e0654087732b375bd8e2a
+guid: 8e818753f356d8d4f80f5fa141a36038
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2236977215296606703
-    second: bgsky_0
+      213: 7675826601332790545
+    second: coin_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bgsky_0
+      name: coin_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1200
-        height: 250
+        x: 87
+        y: 78
+        width: 468
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe19560ece65b0f10800000000000000
-      internalID: 2236977215296606703
+      spriteID: 1155fe920a3068a60800000000000000
+      internalID: 7675826601332790545
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bgsky_0: 2236977215296606703
+      coin_0: 7675826601332790545
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
