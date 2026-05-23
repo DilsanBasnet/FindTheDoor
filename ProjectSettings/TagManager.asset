@@ -7,6 +7,9 @@ TagManager:
   - FallDetector
   - CheckPoint
   - Obstacles
+  - NextLevel
+  - PreviousLevel
+  - CollectableItem
   layers:
   - Default
   - TransparentFX

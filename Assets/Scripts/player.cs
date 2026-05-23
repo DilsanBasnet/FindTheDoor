@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -37,12 +38,22 @@ public class player : MonoBehaviour
         Flip();
         fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y) ;
     }
-    void OnTriggerEnter2D(Collider2D collision){
+    private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag ==  "FallDetector"){
             transform.position = respawn;
         }
         else if (collision.tag == "CheckPoint"){
             respawn = transform.position;
+        }
+        else if (collision.tag == "NextLevel"){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            respawn = transform.position;
+        }
+        else if(collision.tag == "PreviousLevel"){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            respawn = transform.position;
+
+            
         }
     }
     private void FixedUpdate()
