@@ -3,8 +3,8 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
    private float horizontal;
-   private float speed = 6f;
-   private float jump = 8f;
+   private float speed = 5f;
+   private float jump = 6f;
    private bool facingright = true;
 
    [SerializeField] private Rigidbody2D rgby;
@@ -17,10 +17,11 @@ public class player : MonoBehaviour
         if(Input.GetButtonDown("Jump") && IsGrounded()){
             rgby.linearVelocity = new Vector2(rgby.linearVelocity.x, jump);
         }
-        if(Input.GetButtonUp("Jump") && rgby.linearVelocity.y > 0f)
-        {
+
+        if(Input.GetButtonUp("Jump") && rgby.linearVelocity.y > 0f){
             rgby.linearVelocity = new Vector2(rgby.linearVelocity.y, rgby.linearVelocity.y * 0.5f) ;
         }
+
         Flip();
     }
     private void FixedUpdate()
