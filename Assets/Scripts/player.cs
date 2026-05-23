@@ -6,11 +6,23 @@ public class player : MonoBehaviour
    private float speed = 5f;
    private float jump = 6f;
    private bool facingright = true;
+   private Vector3 respawn;
+
+   public GameObject fallDetector;
+
+
+
 
    [SerializeField] private Rigidbody2D rgby;
    [SerializeField] private LayerMask groundLayer;
    [SerializeField] private Transform groundCheck;
 
+
+    void Start()
+    {
+        respawn = transform.position;
+    }
+    
     void Update() {
         horizontal= Input.GetAxisRaw("Horizontal");
 
@@ -23,6 +35,15 @@ public class player : MonoBehaviour
         }
 
         Flip();
+        fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y) ;
+    }
+    void OnTriggerEnter2D(Collider2D collision){
+        if(collision.tag ==  "FallDetector"){
+            transform.position = respawn;
+        }
+        else if (collision.tag == "CheckPoint"){
+            respawn = transform.position;
+        }
     }
     private void FixedUpdate()
     {
