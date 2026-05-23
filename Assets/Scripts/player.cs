@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ public class player : MonoBehaviour
    private float jump = 6f;
    private bool facingright = true;
    private Vector3 respawn;
-
+  
    public GameObject fallDetector;
 
 
@@ -52,9 +53,13 @@ public class player : MonoBehaviour
         else if(collision.tag == "PreviousLevel"){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             respawn = transform.position;
-
-            
         }
+
+    else if(collision.tag == "CollectableItem")
+        {
+            collision.gameObject.SetActive(false);
+        }
+        
     }
     private void FixedUpdate()
     {
