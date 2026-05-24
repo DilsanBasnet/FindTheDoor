@@ -7,4 +7,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Level_1");
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
