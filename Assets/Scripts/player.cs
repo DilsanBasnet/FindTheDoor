@@ -55,12 +55,12 @@ public class player : MonoBehaviour
             respawn = transform.position;
         }
 
-    else if(collision.tag == "CollectableItem")
-        {
+        else if(collision.tag == "CollectableItem"){
+            Scoring.CollectableScore += 1;
             collision.gameObject.SetActive(false);
-        }
-        
+        }  
     }
+    
     private void FixedUpdate()
     {
         rgby.linearVelocity = new Vector2(horizontal * speed, rgby.linearVelocity.y);
