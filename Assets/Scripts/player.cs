@@ -1,6 +1,7 @@
-using Unity.VisualScripting.Antlr3.Runtime;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class player : MonoBehaviour
    private Vector3 respawn;
   
    public GameObject fallDetector;
+   public Text Collectableitemtext;
 
 
 
@@ -23,6 +25,7 @@ public class player : MonoBehaviour
     void Start()
     {
         respawn = transform.position;
+        Collectableitemtext.text = "Collectable Score: " + Scoring.CollectableScore;
     }
     
     void Update() {
@@ -57,10 +60,11 @@ public class player : MonoBehaviour
 
         else if(collision.tag == "CollectableItem"){
             Scoring.CollectableScore += 1;
+            Collectableitemtext.text = "Collectable Score: " + Scoring.CollectableScore;
             collision.gameObject.SetActive(false);
         }  
     }
-    
+
     private void FixedUpdate()
     {
         rgby.linearVelocity = new Vector2(horizontal * speed, rgby.linearVelocity.y);
