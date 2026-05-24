@@ -3,7 +3,7 @@ using UnityEngine;
 public class coin : MonoBehaviour
 {
     public CoinManager coinManager;
-    public int value;
+    public int value =1;
     void Start()
     {
         if(coinManager == null)
@@ -13,14 +13,15 @@ public class coin : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            
+       
         if(coinManager != null)
         {
-            coinManager.Changecoins(1);
-        }
-        else
-        {
-            Debug.LogError("coinManager missing");
+           coinManager.ChangeCoins(value);
         }
         Destroy(gameObject);
+         }
     }
 }
