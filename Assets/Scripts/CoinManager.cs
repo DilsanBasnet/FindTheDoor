@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-   public int totalcoins;
+   public int collectableitems;
    public TMP_Text cointext;
 
     void Start(){
-        cointext.text = "Coin:" + totalcoins;
+        cointext.text = "Collectable Items: " + collectableitems;
     }
     public void Changecoins(int amount) {
-        totalcoins += amount;
-        cointext.text = "Coin: " + totalcoins;
+        collectableitems += amount;
+        cointext.text = "Collectable Items: " + collectableitems;
 
     }
 }

@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class player : MonoBehaviour
    private Vector3 respawn;
   
    public GameObject fallDetector;
-   public Text Collectableitemtext;
 
 
 
@@ -25,7 +23,6 @@ public class player : MonoBehaviour
     void Start()
     {
         respawn = transform.position;
-        Collectableitemtext.text = "Collectable Score: " + Scoring.CollectableScore;
     }
     
     void Update() {
@@ -58,11 +55,6 @@ public class player : MonoBehaviour
             respawn = transform.position;
         }
 
-        else if(collision.tag == "CollectableItem"){
-            Scoring.CollectableScore += 1;
-            Collectableitemtext.text = "Collectable Score: " + Scoring.CollectableScore;
-            collision.gameObject.SetActive(false);
-        }  
     }
 
     private void FixedUpdate()

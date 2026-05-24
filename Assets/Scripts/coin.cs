@@ -9,4 +9,9 @@ public class coin : MonoBehaviour
         coinManager.Changecoins(1);
         Destroy(gameObject);
     }
+    private void Awake()
+{
+    if (coinManager == null)
+        coinManager = FindObjectOfType<CoinManager>();
+}
 }
