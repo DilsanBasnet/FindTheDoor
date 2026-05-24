@@ -4,14 +4,23 @@ public class coin : MonoBehaviour
 {
     public CoinManager coinManager;
     public int value;
+    void Start()
+    {
+        if(coinManager == null)
+        {
+            coinManager = FindAnyObjectByType<CoinManager>();
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        coinManager.Changecoins(1);
+        if(coinManager != null)
+        {
+            coinManager.Changecoins(1);
+        }
+        else
+        {
+            Debug.LogError("coinManager missing");
+        }
         Destroy(gameObject);
     }
-    private void Awake()
-{
-    if (coinManager == null)
-        coinManager = FindObjectOfType<CoinManager>();
-}
 }
