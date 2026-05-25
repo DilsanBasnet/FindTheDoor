@@ -1,38 +1,41 @@
-using System.Drawing;
-using UnityEditor.Callbacks;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class movingplatform : MonoBehaviour
 {
     public Transform PointA, PointB;
     public float speed;
-    private Vector3  targetPoint;
+    Vector3  targetPoint;
 
     private void Start()
     {
         targetPoint = PointB.position;
     }
-    public void Update()
+    private void Update()
     {
+        if(Vector2.Distance(transform.position, PointA.position)< 0.05f)
+        {
+            targetPoint = PointB.position;
+        }
+        if(Vector2.Distance(transform.position, PointB.position) < 0.05f)
+        {
+            targetPoint = PointA.position;
+        }
         transform.position = Vector3.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
-        if(transform.position == targetPoint)
-        {
-            targetPoint = (targetPoint == PointA.position) ? PointB.position : PointA.position;
-        }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.CompareTag("Player"))
         {
-            collision.gameObject.transform.parent = transform;
+            collision.transform.parent = this.transform;
         }
     }
-    private void OCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.CompareTag("Player"))
         {
-           collision.gameObject.transform.parent = null; 
+            collision.transform.parent = null;
         }
     }
-
 }

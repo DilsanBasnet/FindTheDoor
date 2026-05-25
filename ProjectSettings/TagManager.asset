@@ -10,6 +10,7 @@ TagManager:
   - NextLevel
   - PreviousLevel
   - CollectableItem
+  - Platform
   layers:
   - Default
   - TransparentFX
