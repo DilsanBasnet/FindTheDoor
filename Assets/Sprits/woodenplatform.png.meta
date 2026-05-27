@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82922673f0ed1ed479db33f0d9a69339
+guid: ec426d9bfe870004f8be7111f91dbeb9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2544669319357028695
-    second: obstacleforgame2_0
+      213: 1355069986189459932
+    second: woodenplatform_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: obstacleforgame2_0
+      name: woodenplatform_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 31
-        width: 87
-        height: 140
+        x: 7
+        y: 14
+        width: 320
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7595c13834b705320800000000000000
-      internalID: 2544669319357028695
+      spriteID: cd1cd9419fc2ec210800000000000000
+      internalID: 1355069986189459932
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      obstacleforgame2_0: 2544669319357028695
+      woodenplatform_0: 1355069986189459932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
