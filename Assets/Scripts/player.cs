@@ -14,12 +14,12 @@ public class player : MonoBehaviour
   
    public GameObject fallDetector;
 
-
-
-
    [SerializeField] private Rigidbody2D rgby;
    [SerializeField] private LayerMask groundLayer;
    [SerializeField] private Transform groundCheck;
+   [SerializeField] private float respawnDelay = 1f;
+
+   private bool isRespawing = false;
 
 
     void Start()
@@ -28,6 +28,9 @@ public class player : MonoBehaviour
     }
     
     void Update() {
+        if(isRespawing) 
+        return;
+
         horizontal= Input.GetAxisRaw("Horizontal");
 
         if(Input.GetButtonDown("Jump") && IsGrounded()){
@@ -35,24 +38,24 @@ public class player : MonoBehaviour
         }
 
         if(Input.GetButtonUp("Jump") && rgby.linearVelocity.y > 0f){
-            rgby.linearVelocity = new Vector2(rgby.linearVelocity.y, rgby.linearVelocity.y * 0.5f) ;
+            rgby.linearVelocity = new Vector2(rgby.linearVelocity.x, rgby.linearVelocity.y * 0.5f) ;
         }
 
         Flip();
         fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y) ;
     }
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag ==  "FallDetector"){
-            transform.position = respawn;   
+        if(collision.CompareTag("FallDetector") && !isRespawing){
+            StartCoroutine(RespawnRoutine()); 
         }
-        else if (collision.tag == "CheckPoint"){
+        else if (collision.CompareTag("CheckPoint")){
             respawn = transform.position;  
         }
-        else if (collision.tag == "NextLevel"){
+        else if (collision.CompareTag("NextLevel")){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             respawn = transform.position;
         }
-        else if(collision.tag == "PreviousLevel"){
+        else if(collision.CompareTag("PreviousLevel")){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             respawn = transform.position; 
         }
@@ -60,6 +63,8 @@ public class player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(isRespawing)
+        return;
         rgby.linearVelocity = new Vector2(horizontal * speed, rgby.linearVelocity.y);
     }
         private bool IsGrounded()
@@ -67,6 +72,17 @@ public class player : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
     } 
+    private IEnumerator RespawnRoutine()
+    {
+        isRespawing = true;
+        rgby.linearVelocity = Vector2.zero;
+        rgby.bodyType = RigidbodyType2D.Kinematic;
+
+        yield return new WaitForSeconds(respawnDelay);
+        transform.position = respawn;
+        rgby.bodyType = RigidbodyType2D.Dynamic;
+        isRespawing = false;
+    }
       private void Flip()
     {
         if(facingright && horizontal < 0f || !facingright && horizontal > 0f){
@@ -78,5 +94,6 @@ public class player : MonoBehaviour
 
         }
     }
+    
    
 }
