@@ -1,4 +1,6 @@
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,10 +43,10 @@ public class player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag ==  "FallDetector"){
-            transform.position = respawn;
+            transform.position = respawn;   
         }
         else if (collision.tag == "CheckPoint"){
-            respawn = transform.position;
+            respawn = transform.position;  
         }
         else if (collision.tag == "NextLevel"){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -52,11 +54,10 @@ public class player : MonoBehaviour
         }
         else if(collision.tag == "PreviousLevel"){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            respawn = transform.position;
+            respawn = transform.position; 
         }
 
     }
-
     private void FixedUpdate()
     {
         rgby.linearVelocity = new Vector2(horizontal * speed, rgby.linearVelocity.y);
@@ -77,4 +78,5 @@ public class player : MonoBehaviour
 
         }
     }
+   
 }
