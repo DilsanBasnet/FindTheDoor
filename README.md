@@ -1,6 +1,6 @@
 # FindTheDoor - 2D Game   [![Hackatime](https://img.shields.io/badge/Hackatime-48h_18m-ff477e?logo=wakatime&logoColor=white)](https://github.com/DilsanBasnet)
 
-## DEMO: 
+## DEMO:  [FindTheDoor](https://dilsanbasnet.itch.io/findthedoor-2d-parkour-game)
 
 *I Build this 2D game called FindTheDoor. It is a Parkour challenging 2D plaforming game where patience and precision are keys.
 Players must navigate very difficult parkour levels & dodging obstacles like; spikes, and wooden-spike-platforms, while collecting collectableItems like coins, diamonds.*
@@ -52,3 +52,5 @@ Players must navigate very difficult parkour levels & dodging obstacles like; sp
 </table>
 
 ---
+## Author:
+*Dilsan Basnet*
